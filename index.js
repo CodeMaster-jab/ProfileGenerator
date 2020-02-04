@@ -20,6 +20,7 @@ const userData = {
 };
 
 function writeToFile(fileName, html) {
+  console.log('Generating PDF file ...');
   fs.writeFile(fileName, html, (err) => {
     if (err) {
       return console.log(err);
