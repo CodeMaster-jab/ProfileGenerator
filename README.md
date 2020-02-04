@@ -18,6 +18,8 @@ from the users GitHub profile.
 
 [Application](https://codemaster-jab.github.io/ProfileGenerator/)
 
+[PDF Profile](https://github.com/CodeMaster-jab/ProfileGenerator/blob/master/codemaster-jab.pdf)
+
 ## Demo
 
 ![Profile Generator Demo](demo.gif)
