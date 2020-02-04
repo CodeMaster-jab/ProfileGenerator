@@ -2,7 +2,7 @@ const generateHTML = require('./generateHTML');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const axios = require('axios');
-const pdf = require('pdf-creator-node');
+const pdf = require('html-pdf');
 
 const userData = {
   user: '',
@@ -27,22 +27,11 @@ function writeToFile(fileName, html) {
   });
   const options = {
     format: 'A3',
-    orientation: 'portrait',
-    border: '10mm',
   };
-
-  const document = {
-    html: html,
-    path: `./${userData.user}.pdf`,
-  };
-
-  pdf.create(document, options)
-    .then((res) => {
-      // console.log(res);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  pdf.create(html, options).toFile(`./${userData.user}.pdf`, (err) => {
+    if (err) return console.log(err);
+    console.log('Success!');
+  });
 }
 
 function init() {

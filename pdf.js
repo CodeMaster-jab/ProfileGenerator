@@ -1,23 +1,10 @@
 const fs = require('fs');
-const pdf = require('pdf-creator-node');
+const pdf = require('html-pdf');
 
-const html = fs.readFileSync('codemaster-jab.html', 'utf8');
+const html = fs.readFileSync('./codemaster-jab.html', 'utf8');
+const options = { format: 'A3' };
 
-const options = {
-  format: 'A3',
-  orientation: 'portrait',
-  border: '10mm',
-};
-
-const document = {
-  html: html,
-  path: './output.pdf',
-};
-
-pdf.create(document, options)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+pdf.create(html, options).toFile('./output.pdf', (err, res) => {
+  if (err) return console.log(err);
+  console.log(res); // { filename: '/app/businesscard.pdf' }
+});
