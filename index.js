@@ -17,6 +17,7 @@ const userData = {
   public_gists: '',
   html_url: '',
   avatar_url: '',
+  blog: '',
 };
 
 function writeToFile(fileName, html) {
@@ -62,7 +63,7 @@ function init() {
       .get(`https://api.github.com/users/${data.user}`)
       .then((res) => {
         if (res.status === 200) {
-          // console.log(res.data);
+          console.log(res.data);
           userData.name = res.data.name;
           userData.location = res.data.location;
           userData.company = res.data.company;
@@ -73,6 +74,7 @@ function init() {
           userData.following = res.data.following;
           userData.html_url = res.data.html_url;
           userData.avatar_url = res.data.avatar_url;
+          userData.blog = res.data.blog;
           const html = generateHTML.generateHTML(userData);
           writeToFile(filename, html);
         }
