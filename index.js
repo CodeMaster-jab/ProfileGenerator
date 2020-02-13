@@ -26,13 +26,13 @@ function writeToFile(fileName, html) {
     if (err) {
       return console.log(err);
     }
-  });
-  const options = {
-    format: 'A3',
-  };
-  pdf.create(html, options).toFile(`./${userData.user}.pdf`, (err) => {
-    if (err) return console.log(err);
-    console.log('Success!');
+    const options = {
+      format: 'A3',
+    };
+    pdf.create(html, options).toFile(`./${userData.user}.pdf`, (err) => {
+      if (err) return console.log(err);
+      console.log('Success!');
+    });
   });
 }
 

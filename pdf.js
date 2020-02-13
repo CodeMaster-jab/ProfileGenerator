@@ -1,7 +1,7 @@
 const fs = require('fs');
 const pdf = require('html-pdf');
 
-const html = fs.readFileSync('./codemaster-jab.html', 'utf8');
+const html = fs.readFileSync('./index.html', 'utf8');
 const options = { format: 'A3' };
 
 pdf.create(html, options).toFile('./output.pdf', (err, res) => {
